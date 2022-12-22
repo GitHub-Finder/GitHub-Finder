@@ -1,40 +1,26 @@
-const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
-const path = require('path');
-
-const { typeDefs, resolvers } = require('./schemas');
-const db = require('./config/connection');
-
-const PORT = process.env.PORT || 3001;
+const express = require("express");
 const app = express();
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+const http = require("http");
+const { Server } = require("socket.io");
+const serverio = http.createServer(app);
+const cors = require("cors");
+
+app.use(cors());
+
+const io = new Server(serverio, {
+  cors: {
+    origin: "http://localhost:3000",
+  },
 });
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+io.on("connection", (socket) => {
+  console.log(`User Connected: ${socket.id}`);
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-}
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  socket.on("send_message", (data) => {
+    socket.broadcast.emit("receive_message", data);
+  });
 });
 
-// Create a new instance of an Apollo server with the GraphQL schema
-const startApolloServer = async (typeDefs, resolvers) => {
-  await server.start();
-  server.applyMiddleware({ app });
-  
-  db.once('open', () => {
-    app.listen(PORT, () => {
-      console.log(`API server running on port ${PORT}!`);
-      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-    })
-  })
-  };
-  
-  // Call the async function to start the server
-  startApolloServer(typeDefs, resolvers);
+serverio.listen(3001, () => {
+  console.log("Server is running");
+});
