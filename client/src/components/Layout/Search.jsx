@@ -1,57 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import GithubContext from "../../context/github/GithubContext";
 
 function Search() {
-  const [option, setOption] = useState("Users");
-  const [data, setData] = useState([]);
   const [input, setInput] = useState("");
-
+  const {
+    searchUsers,
+    loading,
+    setLoading,
+    option,
+    setOption,
+    clearUsers,
+    clearRepos,
+    clearIssues,
+    searchIssues,
+    searchRepos,
+  } = useContext(GithubContext);
   const handleInput = (e) => {
     setInput(e.target.value);
-    console.log(e.target.value);
+    console.log(input);
+  };
+
+  const handleSubmit = () => {
+    if (!input) {
+      alert("Please enter something", "error");
+    } else if (option === "Users") {
+      searchUsers(input);
+      setInput("");
+    } else if (option === "Repositories") {
+      searchRepos(input);
+      setInput("");
+    } else if (option === "Issues") {
+      searchIssues(input);
+      setInput("");
+    }
   };
 
   const handleChange = (e) => {
     setOption(e.target.value);
-    console.log(e.target.value);
+    console.log(option);
   };
 
-  const getData = async (option) => {
-    switch (option) {
-      case "Users": {
-        setInput("");
-        const response = await fetch(
-          `https://api.github.com/search/users?q=${input}`
-        );
-        const data = await response.json();
-        console.log(data);
-        return setData(data.items);
-      }
-      case "Repositories": {
-        setInput("");
-        const response = await fetch(
-          `https://api.github.com/search/repositories?q=${input}`
-        );
-        const data = await response.json();
-        console.log(data);
-        return setData(data.items);
-      }
-      case "Issues": {
-        setInput("");
-        const response = await fetch(
-          `https://api.github.com/search/issues?q=${input}`
-        );
-        const data = await response.json();
-        console.log(data);
-        return setData(data.items);
-      }
-    }
+  const clearData = () => {
+    clearUsers();
+    clearIssues();
+    clearRepos();
   };
+
   return (
     <div className="search_container">
       <div className="search">
-        <input value={input} onChange={handleInput} />
-        <button type="button" onClick={() => getData(option)}>
+        <input onChange={handleInput} value={input} />
+        <button type="button" onClick={handleSubmit}>
           Search
+        </button>
+        <button type="button" onClick={clearData}>
+          Clear
         </button>
       </div>
       <div className="radioButtons">
@@ -80,11 +83,6 @@ function Search() {
         />
         Issues
       </div>
-      {/* <div>
-        {data.map((el, index) => (
-          <li key={index}>{el}</li>
-        ))}
-      </div> */}
     </div>
   );
 }
