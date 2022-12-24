@@ -40,7 +40,7 @@ export const GithubProvider = ({ children }) => {
       `https://api.github.com/search/repositories?q=${text}`,
       {
         headers: {
-          Authorization: `token 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`,
+          Authorization: `token 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`,
         },
       }
     );
@@ -56,7 +56,7 @@ export const GithubProvider = ({ children }) => {
     setLoading();
     const res = await fetch(`https://api.github.com/search/issues?q=${text}`, {
       headers: {
-        Authorization: `token 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`,
+        Authorization: `token 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`,
       },
     });
     const { items } = await res.json();
@@ -72,7 +72,7 @@ export const GithubProvider = ({ children }) => {
 
     const res = await fetch(`https://api.github.com/users/${userName}`, {
       headers: {
-        Authorization: `token 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`,
+        Authorization: `token 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`,
       },
     });
     if (Response.status === 404) {
