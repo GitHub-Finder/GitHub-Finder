@@ -30,6 +30,7 @@ function Search() {
       alert("Please enter something", "error");
     } else if (option === "Users") {
       searchUsers(input);
+      // console.log("requested");
       setInput("");
     } else if (option === "Repositories") {
       searchRepos(input);

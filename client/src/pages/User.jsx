@@ -9,8 +9,7 @@ function User() {
 
   useEffect(() => {
     searchUser(login);
-    return () => console.log("data fetched");
-  }, []);
+  }, [login]);
 
   return <>user</>;
 }
