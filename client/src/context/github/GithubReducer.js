@@ -54,6 +54,12 @@ const githubReducer = (state, action) => {
         issue: action.payload,
         loading: false,
       };
+    case "SET_FRIEND":
+      return {
+        ...state,
+        friends: action.payload,
+        loading: false,
+      };
     case "SET_OPTION":
       return {
         ...state,

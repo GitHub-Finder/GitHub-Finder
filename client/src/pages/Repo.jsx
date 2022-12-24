@@ -1,7 +1,7 @@
 import React from "react";
 
 function Repos() {
-  return <div>Saved Repos</div>;
+  return <div>Specific repo</div>;
 }
 
 export default Repos;

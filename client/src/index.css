@@ -1,0 +1,58 @@
+.links {
+  width: 50%;
+}
+
+.logo {
+  width: 50%;
+}
+
+.searchContainer {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  height: 80%;
+}
+.ant-layout-content {
+  background-color: #fff;
+  height: 100px;
+}
+
+.usersWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 55px;
+  height: 100%;
+}
+
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.users {
+  background-color: #fff;
+  height: 100%;
+  margin-bottom: 25px;
+}
+.wrapper-lower {
+  display: flex;
+  justify-content: center;
+  height: 10%;
+  background-color: red;
+}
+.container-upper {
+  height: 90%;
+  background-color: red;
+}
+
+.userContainer {
+  align-items: center;
+  justify-content: center;
+}
+.githubIcon {
+  margin-right: 10px;
+  transform: scale(1.5);
+}

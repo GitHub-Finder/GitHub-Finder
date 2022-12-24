@@ -2,7 +2,7 @@ import React from "react";
 
 function Issues({ issues }) {
   console.log(`Issues: `, issues);
-  return <div>User's Issues saved</div>;
+  return <div>Specific Issue</div>;
 }
 
 export default Issues;

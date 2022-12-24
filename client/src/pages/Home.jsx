@@ -23,9 +23,11 @@ function Home() {
   };
 
   return (
-    <div>
-      <Search />
-      {checkOption(option)}
+    <div className="searchContainer">
+      <div className="usersWrapper">
+        <Search />
+        <div className="users">{checkOption(option)}</div>
+      </div>
     </div>
   );
 }

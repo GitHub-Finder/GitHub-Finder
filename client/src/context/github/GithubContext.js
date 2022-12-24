@@ -13,6 +13,7 @@ export const GithubProvider = ({ children }) => {
     issues: [],
     issue: {},
     option: "Users",
+    friends: [],
   };
 
   // Using Reducer
@@ -22,7 +23,7 @@ export const GithubProvider = ({ children }) => {
     setLoading();
     const res = await fetch(`https://api.github.com/search/users?q=${text}`, {
       headers: {
-        Authorization: `token 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`,
+        Authorization: `token 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`,
       },
     });
     const { items } = await res.json();
@@ -39,7 +40,7 @@ export const GithubProvider = ({ children }) => {
       `https://api.github.com/search/repositories?q=${text}`,
       {
         headers: {
-          Authorization: `token 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`,
+          Authorization: `token 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`,
         },
       }
     );
@@ -55,7 +56,7 @@ export const GithubProvider = ({ children }) => {
     setLoading();
     const res = await fetch(`https://api.github.com/search/issues?q=${text}`, {
       headers: {
-        Authorization: `token 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`,
+        Authorization: `token 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`,
       },
     });
     const { items } = await res.json();
@@ -119,6 +120,13 @@ export const GithubProvider = ({ children }) => {
     });
   };
 
+  const setFriend = (login) => {
+    dispatch({
+      type: "SET_FRIEND",
+      payload: login,
+    });
+  };
+
   return (
     <GithubContext.Provider
       value={{
@@ -136,6 +144,8 @@ export const GithubProvider = ({ children }) => {
         setOption,
         searchIssues,
         searchRepos,
+        friends: state.friends,
+        setFriend,
       }}
     >
       {children}

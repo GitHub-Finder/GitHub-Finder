@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
 import GithubContext from "../../context/github/GithubContext";
+import { GoSearch } from "react-icons/go";
+import { MdClear } from "react-icons/md";
 
 function Search() {
   const [input, setInput] = useState("");
@@ -14,6 +16,9 @@ function Search() {
     clearIssues,
     searchIssues,
     searchRepos,
+    users,
+    repos,
+    issues,
   } = useContext(GithubContext);
   const handleInput = (e) => {
     setInput(e.target.value);
@@ -44,18 +49,21 @@ function Search() {
     clearUsers();
     clearIssues();
     clearRepos();
+    setInput("");
   };
 
   return (
     <div className="search_container">
       <div className="search">
         <input onChange={handleInput} value={input} />
-        <button type="button" onClick={handleSubmit}>
-          Search
+        <button type="button" onClick={handleSubmit} className="searchBtn">
+          <GoSearch />
         </button>
-        <button type="button" onClick={clearData}>
-          Clear
-        </button>
+        {(users.length > 0 || repos.length > 0 || issues.length > 0) && (
+          <button type="button" onClick={clearData} className="clear">
+            <MdClear />
+          </button>
+        )}
       </div>
       <div className="radioButtons">
         <input

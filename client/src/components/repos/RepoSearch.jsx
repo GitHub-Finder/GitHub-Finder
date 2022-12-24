@@ -2,11 +2,11 @@ import React from "react";
 
 function RepoSearch({ repos }) {
   return (
-    <div>
+    <ul>
       {repos?.map((el, idx) => (
         <li key={idx}>{el.name}</li>
       ))}
-    </div>
+    </ul>
   );
 }
 
