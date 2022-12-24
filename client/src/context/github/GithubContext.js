@@ -23,7 +23,7 @@ export const GithubProvider = ({ children }) => {
     setLoading();
     const res = await fetch(`https://api.github.com/search/users?q=${text}`, {
       headers: {
-        Authorization: `token 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`,
+        Authorization: `token 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`,
       },
     });
     const { items } = await res.json();
@@ -56,7 +56,11 @@ export const GithubProvider = ({ children }) => {
     setLoading();
     const res = await fetch(`https://api.github.com/search/issues?q=${text}`, {
       headers: {
+<<<<<<< HEAD
         Authorization: `token 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`,
+=======
+        Authorization: `token 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`,
+>>>>>>> a45c658d6334662569d1179e15aeda48d3315fb4
       },
     });
     const { items } = await res.json();
@@ -68,8 +72,10 @@ export const GithubProvider = ({ children }) => {
   };
 
   const searchUser = async (userName) => {
-    setLoading();
+    try {
+      setLoading();
 
+<<<<<<< HEAD
     const res = await fetch(`https://api.github.com/users/${userName}`, {
       headers: {
         Authorization: `token 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`,
@@ -79,10 +85,28 @@ export const GithubProvider = ({ children }) => {
       window.location = "/notfound";
     } else {
       const data = await res.json();
+=======
+      const res = await fetch(`https://api.github.com/users/${userName}`, {
+        headers: {
+          Authorization: `token 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`,
+        },
+      });
+      if (Response.status === 404) {
+        window.location = "/notfound";
+      } else {
+        const data = await res.json();
+        dispatch({
+          type: "GET_USER",
+          payload: data,
+        });
+      }
+    } catch (err) {
+>>>>>>> a45c658d6334662569d1179e15aeda48d3315fb4
       dispatch({
         type: "GET_USER",
-        payload: data,
+        payload: [],
       });
+      console.log(err.message);
     }
   };
 
