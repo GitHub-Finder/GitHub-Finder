@@ -16,6 +16,7 @@
 .userContainer {
   align-items: center;
   justify-content: flex-start;
+  width: 200px;
 }
 .users ul {
   margin-bottom: 25px;

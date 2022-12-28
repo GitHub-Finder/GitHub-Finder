@@ -1,7 +1,6 @@
 import React from "react";
 
-function Issues({ issues }) {
-  console.log(`Issues: `, issues);
+function Issues() {
   return <div>User's Issues saved</div>;
 }
 

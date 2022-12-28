@@ -3,7 +3,7 @@ import Spinner from "../images/Spinner.gif";
 
 function Loading() {
   return (
-    <div className="w-100 mt-20">
+    <div className="loadingSpinner">
       <img
         src={Spinner}
         width={90}

@@ -36,6 +36,7 @@
   background-color: #fff;
   height: 100%;
   margin-bottom: 25px;
+  width: 100%;
 }
 .wrapper-lower {
   display: flex;
@@ -55,4 +56,249 @@
 .githubIcon {
   margin-right: 10px;
   transform: scale(1.5);
+}
+
+.userMainWrapper {
+  margin-bottom: 50px;
+}
+
+.wrapper-top {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 50px;
+  justify-content: center;
+}
+
+.wrapper-bottom {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 80%;
+}
+
+.profile-pic {
+  width: 20%;
+  margin-right: 10px;
+}
+
+.profile-data {
+  width: 50%;
+}
+.type,
+.hireable {
+  padding: 2px 5px;
+  border-radius: 10px;
+}
+
+.type {
+  background-color: rgb(70, 70, 233);
+}
+
+.hireable {
+  background-color: greenyellow;
+}
+
+.bio {
+  padding: 2px 10px;
+  background-color: rgb(49, 192, 240);
+  border-radius: 15px;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.btnAdd {
+  padding: 2px 2px;
+  outline: none;
+  background: none;
+  border-radius: 10px;
+  border: none;
+  width: 30px;
+  height: 20px;
+  margin-left: 5px;
+  background-color: rgb(28, 141, 255);
+  color: #fff;
+  transform: scale(1.2);
+}
+
+.ant-card-meta-description,
+.ant-card-meta-title,
+.addUser {
+  text-align: center;
+}
+
+.btnAdd:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.btnAdd:active {
+  transform: scale(0.95);
+}
+
+.reposSearch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.reposSearch input {
+  height: 25px;
+  width: 250px;
+  border-radius: 10px;
+  border: 1px solid blue;
+  padding: 2px 10px;
+}
+
+.collapse {
+  margin-bottom: 5px;
+  background-color: rgb(200, 206, 212);
+}
+
+.repoHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.loadingSpinner {
+  text-align: center;
+}
+
+.repoList {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.repoGrid {
+  border: 1px solid black;
+  margin: 5px 5px;
+  display: flex;
+}
+
+.repoWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px 5px;
+}
+
+.subUserContainer {
+  width: 70%;
+}
+.repoDescription {
+  font-size: 14px;
+  text-align: left;
+}
+
+.repoName {
+  font-size: 16px;
+  font-weight: bold;
+}
+.avatarRepo {
+  width: 17%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.repoContent {
+  width: 11%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 14px;
+  align-items: center;
+}
+
+.repoOwner {
+  margin: 2px;
+  font-size: 12px;
+}
+
+.linkToRepo {
+  text-decoration: underline;
+  color: grey;
+  font-style: italic;
+}
+
+.linkToRepo:hover {
+  transform: scale(1.1);
+  color: black;
+}
+
+.subUserContainer p {
+  margin: 0;
+}
+
+.addSpan {
+  margin-right: 2px;
+}
+
+.btnAddRepo {
+  justify-content: center;
+  align-items: center;
+  padding: 2px 2px;
+  outline: none;
+  background: none;
+  border-radius: 10px;
+  border: none;
+  width: 60px;
+  height: 20px;
+  margin-left: 5px;
+  background-color: rgb(43, 67, 246);
+  color: #fff;
+}
+
+.btnAddRepo:hover {
+  background-color: rgb(1, 122, 243);
+  transform: scale(0.95);
+  cursor: pointer;
+}
+
+.btnAddRepo:active {
+  transform: scale(0.92);
+}
+
+.repoLanguage {
+  padding: 2px 5px;
+  background-color: aqua;
+  border-radius: 10px;
+}
+
+.repoFilter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkBox {
+  margin: 5px 15px;
+}
+
+.ownerType-User {
+  background-color: rgb(251, 6, 243);
+}
+
+.ownerType-Organization {
+  background-color: orange;
+}
+
+.ownerType-User,
+.ownerType-Organization {
+  padding: 0px 5px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.owner {
+  font-size: 14px;
 }

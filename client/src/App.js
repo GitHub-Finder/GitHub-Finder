@@ -5,10 +5,8 @@ import NotFound from "./pages/NotFound";
 import { Layout } from "antd";
 import { GithubProvider } from "./context/github/GithubContext";
 import User from "./pages/User";
-import Repo from "./pages/Repo";
 import Repos from "./pages/Repos";
 import Issues from "./pages/Issues";
-import Issue from "./pages/Issue";
 import "./assets/style/App.css";
 import { FaGithub } from "react-icons/fa";
 
@@ -42,10 +40,8 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/notfound" element={<NotFound />} />
               <Route path="/users/:login" element={<User />} />
-              <Route path="/repositories" element={<Repos />} />
-              <Route path="/repos/:repo" element={<Repo />} />
+              <Route path="/repos/:repo" element={<Repos />} />
               <Route path="/issues" element={<Issues />} />
-              <Route path="/issues/:issue" element={<Issue />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
           </Content>
