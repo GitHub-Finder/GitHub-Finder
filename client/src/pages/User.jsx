@@ -194,8 +194,9 @@ function User() {
                   <div className="userReposContainer-left">
                     {repo.description ? (
                       <p key={index}>
-                        Description: {repo.description} <br />
-                        Stars <GiStarsStack />: {repo.stargazers_count}
+                        <strong>Description:</strong> {repo.description} <br />
+                        <strong>Stars</strong> <GiStarsStack />:{" "}
+                        {repo.stargazers_count}
                         <br />
                         <strong>Visit Repo: </strong>
                         <a target="_blank" href={repo.html_url}>
@@ -204,8 +205,9 @@ function User() {
                       </p>
                     ) : (
                       <p key={index}>
-                        Name: {repo.name} <br />
-                        Stars <GiStarsStack />: {repo.stargazers_count}
+                        <strong>Name:</strong> {repo.name} <br />
+                        <strong>Stars</strong> <GiStarsStack />:{" "}
+                        {repo.stargazers_count}
                       </p>
                     )}
                     {repo.homepage && (
@@ -218,7 +220,9 @@ function User() {
                     )}
                   </div>
                   <div className="userReposContainer-right">
-                    <p>Public Issues: {repo.open_issues_count}</p>
+                    <p>
+                      <strong>Public Issues:</strong> {repo.open_issues_count}
+                    </p>
                     <p>
                       <a
                         target="_blank"

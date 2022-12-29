@@ -22,7 +22,6 @@ function Search() {
   } = useContext(GithubContext);
   const handleInput = (e) => {
     setInput(e.target.value);
-    console.log(input);
   };
 
   const handleSubmit = () => {
@@ -33,9 +32,6 @@ function Search() {
       setInput("");
     } else if (option === "Repositories") {
       searchRepos(input);
-      setInput("");
-    } else if (option === "Issues") {
-      searchIssues(input);
       setInput("");
     }
   };
@@ -58,7 +54,7 @@ function Search() {
         <button type="button" onClick={handleSubmit} className="searchBtn">
           <GoSearch />
         </button>
-        {(users.length > 0 || repos.length > 0 || issues.length > 0) && (
+        {(users.length > 0 || repos.length > 0) && (
           <button type="button" onClick={clearData} className="clear">
             <MdClear />
           </button>
@@ -81,14 +77,6 @@ function Search() {
           checked={option === "Repositories" ? "checked" : ""}
         />
         Repositories
-        <input
-          type="radio"
-          value="Issues"
-          name="gender"
-          onChange={handleChange}
-          checked={option === "Issues" ? "checked" : ""}
-        />
-        Issues
       </div>
     </div>
   );

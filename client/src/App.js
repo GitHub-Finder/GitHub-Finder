@@ -6,7 +6,6 @@ import { Layout } from "antd";
 import { GithubProvider } from "./context/github/GithubContext";
 import User from "./pages/User";
 import Repos from "./pages/Repos";
-import Issues from "./pages/Issues";
 import "./assets/style/App.css";
 import { FaGithub } from "react-icons/fa";
 
@@ -28,7 +27,6 @@ function App() {
                 <Link to={"/"}>Home</Link>
                 <Link to={"/friends"}>Friends</Link>
                 <Link to={"/repositories"}>Repositories</Link>
-                <Link to={"/issues"}>Issues</Link>
                 <Link to={"/about"}>About</Link>
               </div>
             </div>
@@ -41,7 +39,6 @@ function App() {
               <Route path="/notfound" element={<NotFound />} />
               <Route path="/users/:login" element={<User />} />
               <Route path="/repos/:repo" element={<Repos />} />
-              <Route path="/issues" element={<Issues />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
           </Content>
