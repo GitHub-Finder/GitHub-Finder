@@ -17,14 +17,28 @@ function User() {
   const [loading, setLoading] = useState(false);
   const [repos, setRepos] = useState([]);
   const [input, setInput] = useState("");
+  const [check, setCheck] = useState(false);
   const { user, searchUser, setFriend, friends } = useContext(GithubContext);
   const { login } = useParams();
+  console.log(repos);
+
+  const handleCheck = (e) => {
+    setCheck(e.target.checked);
+  };
+
+  const filterIssues = (array) => {
+    if (check) {
+      return array.filter((el) => el.open_issues_count > 0);
+    } else {
+      return array;
+    }
+  };
 
   const filterSearch = (arr) => {
     if (!input) {
-      return arr;
+      return filterIssues(arr);
     }
-    return arr.filter((el) => {
+    return filterIssues(arr).filter((el) => {
       if (el.name !== 0) {
         return (
           (el.language !== null && el.language.toLowerCase().includes(input)) ||
@@ -74,7 +88,6 @@ function User() {
       language["count"] = languages[key];
       arrayOfLanguages.push(language);
     });
-    console.log(arrayOfLanguages);
     return arrayOfLanguages;
   };
 
@@ -108,7 +121,6 @@ function User() {
                 <AiOutlineUsergroupAdd />
               </button>
             </p>
-            {/* backend to add user */}
           </Card>
         </div>
         <div className="profile-data">
@@ -168,73 +180,82 @@ function User() {
             <p>Found: {filterSearch(repos).length}</p>
           </div>
           <div className="inputSeach">
-            <label htmlFor="searchInput">Search by Language: </label>
-            <input name="searchInput" value={input} onChange={handleChange} />
+            <div>
+              <label htmlFor="searchInput">Search by Language: </label>
+              <input name="searchInput" value={input} onChange={handleChange} />
+            </div>
+            <div className="checkBox">
+              <label htmlFor="hasHomePage">Include Issues</label>
+              <input type="checkbox" onChange={handleCheck} />
+            </div>
           </div>
         </div>
         {loading ? (
           <Loading />
         ) : filterSearch(repos).length !== 0 ? (
           filterSearch(repos)?.map((repo, index) => (
-            <Collapse defaultActiveKey={[{ index }]} className="collapse">
-              <Panel
-                header={
-                  <div className="repoHeader">
-                    <div className="container-1">
-                      {repo.name + (repo.language ? " / " + repo.language : "")}
+            <div className="userRepoContainer" key={index}>
+              <div className="userPanel">
+                <Collapse defaultActiveKey={[{ index }]} className="collapse">
+                  <Panel
+                    header={
+                      <div className="repoHeader">
+                        <div className="container-1">
+                          {repo.name +
+                            (repo.language ? " / " + repo.language : "")}
+                        </div>
+                        <div className="container-2">
+                          {"Created: " + repo.created_at.slice(0, 10)}
+                        </div>
+                      </div>
+                    }
+                    key={index}
+                  >
+                    <div className="userReposWrapper">
+                      <div className="userReposContainer-left">
+                        <p>
+                          {repo.description && (
+                            <p>
+                              <strong>Description:</strong> {repo.description}
+                            </p>
+                          )}
+                          <strong>Stars</strong> <GiStarsStack />:
+                          {repo.stargazers_count}
+                          <br />
+                          <strong>Visit Repo: </strong>
+                          <a target="_blank" href={repo.html_url}>
+                            <BsArrowRightShort /> {repo.html_url}
+                          </a>
+                        </p>
+                        {repo.homepage && (
+                          <p>
+                            <strong>Home Page: </strong>
+                            <a target="_blank" href={repo.homepage}>
+                              {repo.homepage}
+                            </a>
+                          </p>
+                        )}
+                      </div>
+                      <div className="userReposContainer-right">
+                        <p>
+                          <strong>Public Issues:</strong>{" "}
+                          {repo.open_issues_count}
+                        </p>
+                        <p>
+                          <a
+                            target="_blank"
+                            href={`https://github.com/${login}/${repo.name}/issues`}
+                          >
+                            View Issues
+                          </a>
+                        </p>
+                      </div>
                     </div>
-                    <div className="container-2">
-                      {"Created: " + repo.created_at.slice(0, 10)}
-                    </div>
-                  </div>
-                }
-                key={index}
-              >
-                <div className="userReposWrapper">
-                  <div className="userReposContainer-left">
-                    {repo.description ? (
-                      <p key={index}>
-                        <strong>Description:</strong> {repo.description} <br />
-                        <strong>Stars</strong> <GiStarsStack />:{" "}
-                        {repo.stargazers_count}
-                        <br />
-                        <strong>Visit Repo: </strong>
-                        <a target="_blank" href={repo.html_url}>
-                          <BsArrowRightShort /> {repo.html_url}
-                        </a>
-                      </p>
-                    ) : (
-                      <p key={index}>
-                        <strong>Name:</strong> {repo.name} <br />
-                        <strong>Stars</strong> <GiStarsStack />:{" "}
-                        {repo.stargazers_count}
-                      </p>
-                    )}
-                    {repo.homepage && (
-                      <p>
-                        <strong>Home Page: </strong>
-                        <a target="_blank" href={repo.homepage}>
-                          {repo.homepage}
-                        </a>
-                      </p>
-                    )}
-                  </div>
-                  <div className="userReposContainer-right">
-                    <p>
-                      <strong>Public Issues:</strong> {repo.open_issues_count}
-                    </p>
-                    <p>
-                      <a
-                        target="_blank"
-                        href={`https://github.com/${login}/${repo.name}/issues`}
-                      >
-                        View Issues
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              </Panel>
-            </Collapse>
+                  </Panel>
+                </Collapse>
+              </div>
+              <button className="userRepoAddBtn">Add</button>
+            </div>
           ))
         ) : (
           <p>No Repositories Found ...</p>

@@ -360,3 +360,43 @@
 .directionDropdown {
   margin: auto 15px;
 }
+
+.userRepoContainer {
+  display: flex;
+  width: 100%;
+}
+
+.userPanel {
+  width: 95%;
+}
+
+.userRepoAddBtn {
+  width: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3px 5px;
+  background-color: rgb(45, 88, 243);
+  border-radius: 10px;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+
+.userRepoAddBtn:hover {
+  background-color: rgb(3, 56, 247);
+  transform: scale(0.97);
+  cursor: pointer;
+}
+.userRepoAddBtn:active {
+  transform: scale(0.94);
+}
+
+.checkBox input {
+  width: 15px;
+}
+.checkBox {
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+}
