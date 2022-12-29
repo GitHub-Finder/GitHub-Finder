@@ -7,18 +7,13 @@ function Search() {
   const [input, setInput] = useState("");
   const {
     searchUsers,
-    loading,
-    setLoading,
     option,
     setOption,
     clearUsers,
     clearRepos,
-    clearIssues,
-    searchIssues,
     searchRepos,
     users,
     repos,
-    issues,
   } = useContext(GithubContext);
   const handleInput = (e) => {
     setInput(e.target.value);
@@ -38,11 +33,17 @@ function Search() {
 
   const handleChange = (e) => {
     setOption(e.target.value);
+    clearData();
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      return handleSubmit();
+    }
   };
 
   const clearData = () => {
     clearUsers();
-    clearIssues();
     clearRepos();
     setInput("");
   };
@@ -50,7 +51,7 @@ function Search() {
   return (
     <div className="search_container">
       <div className="search">
-        <input onChange={handleInput} value={input} />
+        <input onChange={handleInput} value={input} onKeyDown={handleKeyDown} />
         <button type="button" onClick={handleSubmit} className="searchBtn">
           <GoSearch />
         </button>

@@ -4,7 +4,6 @@ import { schemeDark2 } from "d3";
 
 function Piechart({ languages }) {
   const data = languages;
-  console.log(data);
   const pieChart = useRef();
   useEffect(() => {
     const piedata = d3.pie().value((d) => d.count)(data);
@@ -36,8 +35,6 @@ function Piechart({ languages }) {
       .attr("fill", colors)
       .attr("stroke", "white")
       .on("mouseover", (e, d) => {
-        console.log(e);
-        console.log(d.data.item, d.data.count);
         tooldiv
           .style("visibility", "visible")
           .text(`${d.data.item}: ` + `${d.data.count}`)
