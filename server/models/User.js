@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 
 const repoSchema = require('./Repo');
-const issueSchema = require('./Issue');
 
 const userSchema = new Schema(
     {
@@ -21,7 +20,6 @@ const userSchema = new Schema(
         required: true,
       },
       savedRepos: [ repoSchema ],
-      savedIssues: [ issueSchema ],
     },
     {
         toJSON: {
@@ -36,10 +34,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
 
 userSchema.virtual('repoCount').get(function () {
     return this.savedRepos.length;
-  });
-
-userSchema.virtual('issueCount').get(function () {
-    return this.savedIssues.length;
   });
 
 const User = model('User', userSchema);
