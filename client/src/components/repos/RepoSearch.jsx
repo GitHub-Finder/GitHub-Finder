@@ -19,7 +19,7 @@ function RepoSearch({ repos }) {
     searchBy: "Stars",
     direction: "Descending",
   });
-
+  console.log(repos);
   const handleChange = (value) => {
     setFilter({ ...filter, searchBy: value });
   };
@@ -79,7 +79,7 @@ function RepoSearch({ repos }) {
                 name="select"
                 defaultValue="Stars"
                 style={{
-                  width: 120,
+                  width: 140,
                 }}
                 onChange={handleChange}
                 options={[
@@ -96,7 +96,7 @@ function RepoSearch({ repos }) {
             </div>
           </div>
           <div className="directionDropdown">
-            <label htmlFor="select">Direction:</label>
+            <label htmlFor="select">Order:</label>
             <Select
               name="select"
               defaultValue="Descending"
@@ -140,10 +140,13 @@ function RepoSearch({ repos }) {
                   </div>
                   <div className="subUserContainer">
                     <p className="repoName">
-                      {repo.name} <AiFillStar />
+                      <span className="repoNameHighlight">{repo.name}</span>{" "}
+                      <AiFillStar />
                       {repo.stargazers_count}
                     </p>
-                    <p className="repoDescription">{repo.description}</p>
+                    <p className="repoDescriptionParagraph">
+                      <strong>Description:</strong> {repo.description}
+                    </p>
                     {repo.homepage && (
                       <p className="repoDescription">
                         <strong>Home Page:</strong>{" "}
@@ -178,6 +181,22 @@ function RepoSearch({ repos }) {
                         View Repo
                       </a>
                     </div>
+                    {repo.open_issues && (
+                      <div>
+                        <div>
+                          <strong>Issues:</strong> {repo.open_issues}
+                        </div>
+                        <div className="linkToIssues">
+                          <a
+                            className="linkToIssues"
+                            target="_blank"
+                            href={`https://github.com/repos/${repo.owner.login}/${repo.name}/issues`}
+                          >
+                            View Issues
+                          </a>
+                        </div>
+                      </div>
+                    )}
                     <div className="addRepo">
                       <span className="addBtnSpan">
                         <button className="btnAddRepo">

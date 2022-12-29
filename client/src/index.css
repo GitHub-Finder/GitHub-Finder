@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Combo&display=swap");
+
 .links {
   width: 50%;
 }
@@ -67,6 +69,7 @@
   flex-direction: row;
   padding: 10px 50px;
   justify-content: center;
+  width: 100%;
 }
 
 .wrapper-bottom {
@@ -83,6 +86,16 @@
 
 .profile-data {
   width: 50%;
+}
+.chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+.chart h2 {
+  text-align: center;
+  width: 100%;
 }
 .type,
 .hireable {
@@ -191,7 +204,7 @@
 }
 
 .subUserContainer {
-  width: 70%;
+  width: 73%;
 }
 .repoDescription {
   font-size: 14px;
@@ -203,7 +216,7 @@
   font-weight: bold;
 }
 .avatarRepo {
-  width: 17%;
+  width: 12%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -211,7 +224,7 @@
 }
 
 .repoContent {
-  width: 11%;
+  width: 13%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -278,6 +291,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 15px auto;
 }
 
 .checkBox {
@@ -301,4 +315,48 @@
 
 .owner {
   font-size: 14px;
+}
+
+.userReposWrapper {
+  display: flex;
+}
+
+.userReposContainer-left {
+  width: 50%;
+}
+.userReposContainer-right {
+  width: 50%;
+}
+
+.linkToIssues {
+  color: grey;
+  font-size: 14px;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.linkToIssues:hover {
+  transform: scale(1.1);
+  color: black;
+}
+
+.repoWrapper p {
+  margin-bottom: 2px;
+}
+
+.repoDescriptionParagraph {
+  font-family: "Prosto One", cursive;
+  font-size: 14px;
+  text-align: left;
+  font-style: italic;
+}
+
+.repoNameHighlight {
+  padding: 0px 5px;
+  border-radius: 10px;
+  background-color: rgb(0, 244, 37);
+}
+
+.directionDropdown {
+  margin: auto 15px;
 }

@@ -4,8 +4,10 @@ import { ImLocation } from "react-icons/im";
 import { BsArrowRightShort } from "react-icons/bs";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { GiStarsStack } from "react-icons/gi";
+import { DiMitlicence } from "react-icons/di";
 import { GrBlog } from "react-icons/gr";
 import Loading from "../components/Loading";
+import Piechart from "../components/Charts/Piechart";
 import GithubContext from "../context/github/GithubContext";
 import { Card, Collapse } from "antd";
 const { Meta } = Card;
@@ -49,9 +51,31 @@ function User() {
     searchUser(login);
     getUserRepos(login);
   }, [login]);
-
   const handleChange = (e) => {
     setInput(e.target.value);
+  };
+
+  const filterLanguage = (array) => {
+    const languages = {};
+    const arrayOfLanguages = [];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].language) {
+        if (languages[array[i].language] === undefined) {
+          languages[array[i].language] = 1;
+        } else {
+          languages[array[i].language]++;
+        }
+      }
+    }
+
+    Object.keys(languages).forEach((key) => {
+      const language = new Object();
+      language["item"] = key;
+      language["count"] = languages[key];
+      arrayOfLanguages.push(language);
+    });
+    console.log(arrayOfLanguages);
+    return arrayOfLanguages;
   };
 
   return (
@@ -132,6 +156,10 @@ function User() {
             </p>
           )}
         </div>
+        <div className="chart">
+          <h2>Languages</h2>
+          <Piechart languages={filterLanguage(repos)} />
+        </div>
       </div>
       <div className="wrapper-bottom">
         <div className="reposSearch">
@@ -162,19 +190,45 @@ function User() {
                 }
                 key={index}
               >
-                {repo.description ? (
-                  <p key={index}>
-                    Description: {repo.description} <br />
-                    Stars <GiStarsStack />: {repo.stargazers_count}
-                    <br />
-                    Visit Repo: <BsArrowRightShort /> {repo.html_url}
-                  </p>
-                ) : (
-                  <p key={index}>
-                    Name: {repo.name} <br />
-                    Stars <GiStarsStack />: {repo.stargazers_count}
-                  </p>
-                )}
+                <div className="userReposWrapper">
+                  <div className="userReposContainer-left">
+                    {repo.description ? (
+                      <p key={index}>
+                        Description: {repo.description} <br />
+                        Stars <GiStarsStack />: {repo.stargazers_count}
+                        <br />
+                        <strong>Visit Repo: </strong>
+                        <a target="_blank" href={repo.html_url}>
+                          <BsArrowRightShort /> {repo.html_url}
+                        </a>
+                      </p>
+                    ) : (
+                      <p key={index}>
+                        Name: {repo.name} <br />
+                        Stars <GiStarsStack />: {repo.stargazers_count}
+                      </p>
+                    )}
+                    {repo.homepage && (
+                      <p>
+                        <strong>Home Page: </strong>
+                        <a target="_blank" href={repo.homepage}>
+                          {repo.homepage}
+                        </a>
+                      </p>
+                    )}
+                  </div>
+                  <div className="userReposContainer-right">
+                    <p>Public Issues: {repo.open_issues_count}</p>
+                    <p>
+                      <a
+                        target="_blank"
+                        href={`https://github.com/${login}/${repo.name}/issues`}
+                      >
+                        View Issues
+                      </a>
+                    </p>
+                  </div>
+                </div>
               </Panel>
             </Collapse>
           ))
