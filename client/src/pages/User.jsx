@@ -4,7 +4,6 @@ import { ImLocation } from "react-icons/im";
 import { BsArrowRightShort } from "react-icons/bs";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { GiStarsStack } from "react-icons/gi";
-import { DiMitlicence } from "react-icons/di";
 import { GrBlog } from "react-icons/gr";
 import Loading from "../components/Loading";
 import Piechart from "../components/Charts/Piechart";
