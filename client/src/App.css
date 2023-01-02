@@ -1,38 +1,93 @@
-.App {
-  text-align: center;
+/* basic config */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* signup config */
+.signup__container {
+  margin: 20px 80px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.signup__form_container {
+  width: 300px;
+  height: 400px;
+  background-color: rgb(213, 212, 212);
+  box-shadow: 3px 2px 9px 3px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 3px 2px 9px 3px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 3px 2px 9px 3px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.signup__title {
+  font-size: 26px;
+  padding-top: 40px;
+  padding-left: 55px;
+}
+.signup__form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 70%;
+  margin: 20px auto;
 }
-
-.App-link {
-  color: #61dafb;
+.signup__input {
+  margin-top: 15px;
+  height: 30px;
+  border: none;
+  font-size: 17px;
+  padding: 10px 10px;
+  border-radius: 5px;
 }
+.signup__btn_container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.signup__btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.signup__btn:hover {
+  background-color: rgb(238, 221, 224);
+}
+/* login config */
+.login__container {
+  margin: 20px 80px;
+}
+.login__form_container {
+  width: 300px;
+  height: 300px;
+  background-color: rgb(213, 212, 212);
+  box-shadow: 3px 2px 9px 3px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 3px 2px 9px 3px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 3px 2px 9px 3px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+}
+.login__title {
+  font-size: 26px;
+  padding-top: 40px;
+  padding-left: 55px;
+}
+.login__form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: 20px auto;
+}
+.login__input {
+  margin-top: 15px;
+  height: 30px;
+  border: none;
+  font-size: 17px;
+  padding: 10px 10px;
+  border-radius: 5px;
+}
+.login__btn {
+  width: 70px;
+  margin-top: 20px;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  align-self: center;
 }
