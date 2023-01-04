@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import GithubContext from "../../context/github/GithubContext";
 import { GoSearch } from "react-icons/go";
 import { MdClear } from "react-icons/md";
-
+import { Radio } from "antd";
 function Search() {
   const [input, setInput] = useState("");
   const {
@@ -62,7 +62,23 @@ function Search() {
         )}
       </div>
       <div className="radioButtons">
-        <input
+        <Radio.Group defaultValue="Users" buttonStyle="solid">
+          <Radio.Button
+            value="Users"
+            checked={option === "Users" ? "checked" : ""}
+            onChange={handleChange}
+          >
+            Users
+          </Radio.Button>
+          <Radio.Button
+            value="Repositories"
+            onChange={handleChange}
+            checked={option === "Repositories" ? "checked" : ""}
+          >
+            Repositories
+          </Radio.Button>
+        </Radio.Group>
+        {/* <input
           type="radio"
           value="Users"
           name="gender"
@@ -77,7 +93,7 @@ function Search() {
           onChange={handleChange}
           checked={option === "Repositories" ? "checked" : ""}
         />
-        Repositories
+        Repositories */}
       </div>
     </div>
   );

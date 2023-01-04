@@ -9,10 +9,10 @@
 }
 
 .searchContainer {
-  margin-top: 50px;
+  margin-top: 75px;
   display: flex;
   justify-content: center;
-  height: 80%;
+  /* height: 80%; */
 }
 .ant-layout-content {
   background-color: #fff;

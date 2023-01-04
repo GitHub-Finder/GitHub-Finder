@@ -181,7 +181,7 @@ function RepoSearch({ repos }) {
                         View Repo
                       </a>
                     </div>
-                    {repo.open_issues && (
+                    {/* {repo.open_issues && (
                       <div>
                         <div>
                           <strong>Issues:</strong> {repo.open_issues}
@@ -196,7 +196,7 @@ function RepoSearch({ repos }) {
                           </a>
                         </div>
                       </div>
-                    )}
+                    )} */}
                     <div className="addRepo">
                       <span className="addBtnSpan">
                         <button className="btnAddRepo">
