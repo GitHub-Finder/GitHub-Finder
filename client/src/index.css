@@ -13,6 +13,7 @@
   display: flex;
   justify-content: center;
   /* height: 80%; */
+  margin-bottom: 15px;
 }
 .ant-layout-content {
   background-color: #fff;
@@ -26,6 +27,7 @@
   justify-content: center;
   margin-bottom: 55px;
   height: 100%;
+  padding: 15px 10px;
 }
 
 .main-container {

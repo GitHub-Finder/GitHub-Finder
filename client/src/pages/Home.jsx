@@ -3,6 +3,7 @@ import RepoSearch from "../components/repos/RepoSearch";
 import UserSearch from "../components/users/UserSearch";
 import GithubContext from "../context/github/GithubContext";
 import Search from "../components/Search/Search";
+import Nav from "../components/Layout/Nav";
 
 function Home() {
   const { users, repos, option } = useContext(GithubContext);
@@ -19,10 +20,13 @@ function Home() {
   };
 
   return (
-    <div className="searchContainer">
-      <div className="usersWrapper">
-        <Search />
-        <div className="users">{checkOption(option)}</div>
+    <div>
+      <Nav />
+      <div className="searchContainer">
+        <div className="usersWrapper">
+          <Search />
+          <div className="users">{checkOption(option)}</div>
+        </div>
       </div>
     </div>
   );

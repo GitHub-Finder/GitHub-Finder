@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
@@ -9,7 +9,6 @@ import MyProfile from "./pages/MyProfile";
 import Repos from "./pages/Repos";
 import Login from "./pages/Login";
 import "./assets/style/App.css";
-import Nav from "./components/Layout/Nav";
 
 function App() {
   const { Content } = Layout;
