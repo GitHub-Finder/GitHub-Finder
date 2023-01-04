@@ -1,26 +1,16 @@
-const express = require("express");
-const app = express();
-const http = require("http");
-const { Server } = require("socket.io");
-const serverio = http.createServer(app);
-const cors = require("cors");
+const express = require('express');
+require('dotenv').config();
+const mongoConnect = require('./config/connection');
+const cors = require('cors');
+const routes = require('./controllers');
 
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-const io = new Server(serverio, {
-  cors: {
-    origin: "http://localhost:3000",
-  },
-});
+app.use('/api', routes);
 
-io.on("connection", (socket) => {
-  console.log(`User Connected: ${socket.id}`);
-
-  socket.on("send_message", (data) => {
-    socket.broadcast.emit("receive_message", data);
-  });
-});
-
-serverio.listen(3001, () => {
-  console.log("Server is running");
-});
+app.listen(PORT, () => console.log(`App started at port ${PORT}`));

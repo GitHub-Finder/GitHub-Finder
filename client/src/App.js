@@ -1,51 +1,32 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import { Layout } from "antd";
 import { GithubProvider } from "./context/github/GithubContext";
 import User from "./pages/User";
-import Repo from "./pages/Repo";
+import MyProfile from "./pages/MyProfile";
 import Repos from "./pages/Repos";
-import Issues from "./pages/Issues";
-import Issue from "./pages/Issue";
+import Login from "./components/Auth/Login";
+import Signup from "./components/Auth/Signup";
 import "./assets/style/App.css";
-import { FaGithub } from "react-icons/fa";
 
 function App() {
-  const { Header, Footer, Content } = Layout;
+  const { Content } = Layout;
   return (
     <GithubProvider>
       <Router>
         <Layout>
-          <Header>
-            <div className="wrapper">
-              <div className="logo">
-                <Link to={"/"}>
-                  <FaGithub className="githubIcon" />
-                  GitHub Finder
-                </Link>
-              </div>
-              <div className="links">
-                <Link to={"/"}>Home</Link>
-                <Link to={"/friends"}>Friends</Link>
-                <Link to={"/repositories"}>Repositories</Link>
-                <Link to={"/issues"}>Issues</Link>
-                <Link to={"/about"}>About</Link>
-              </div>
-            </div>
-            <div className="links"></div>
-          </Header>
           <Content>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/main" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/notfound" element={<NotFound />} />
-              <Route path="/users/:login" element={<User />} />
-              <Route path="/repositories" element={<Repos />} />
-              <Route path="/repos/:repo" element={<Repo />} />
-              <Route path="/issues" element={<Issues />} />
-              <Route path="/issues/:issue" element={<Issue />} />
+              <Route path="main/users/:login" element={<User />} />
+              <Route path="main/repos/:repo" element={<Repos />} />
+              <Route path="/myprofile/:login" element={<MyProfile />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/" element={<Login />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
           </Content>

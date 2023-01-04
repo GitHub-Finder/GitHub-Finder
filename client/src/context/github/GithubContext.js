@@ -14,35 +14,31 @@ export const GithubProvider = ({ children }) => {
     issue: {},
     option: "Users",
     friends: [],
+    githubUser: "",
   };
 
   // Using Reducer
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
   const searchUsers = async (text) => {
-    setLoading();
-    const res = await fetch(`https://api.github.com/search/users?q=${text}`, {
-      headers: {
-        Authorization: `token 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`,
-      },
-    });
+    const res = await fetch(
+      `https://api.github.com/search/users?q=${text}&per_page=100`
+    );
     const { items } = await res.json();
     console.log(items);
     dispatch({
       type: "GET_USERS",
       payload: items,
     });
+    dispatch({
+      type: "SET_LOADING",
+    });
   };
 
   const searchRepos = async (text) => {
     setLoading();
     const res = await fetch(
-      `https://api.github.com/search/repositories?q=${text}`,
-      {
-        headers: {
-          Authorization: `token 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`,
-        },
-      }
+      `https://api.github.com/search/repositories?q=${text}&per_page=100`
     );
     const { items } = await res.json();
     console.log(items);
@@ -53,18 +49,10 @@ export const GithubProvider = ({ children }) => {
   };
 
   const searchIssues = async (text) => {
-    setLoading();
-    const res = await fetch(`https://api.github.com/search/issues?q=${text}`, {
-      headers: {
-<<<<<<< HEAD
-        Authorization: `token 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`,
-=======
-        Authorization: `token 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`,
->>>>>>> a45c658d6334662569d1179e15aeda48d3315fb4
-      },
-    });
+    const res = await fetch(
+      `https://api.github.com/search/issues?q=${text}&per_page=100`
+    );
     const { items } = await res.json();
-    console.log(items);
     dispatch({
       type: "GET_ISSUES",
       payload: items,
@@ -74,26 +62,10 @@ export const GithubProvider = ({ children }) => {
   const searchUser = async (userName) => {
     try {
       setLoading();
-
-<<<<<<< HEAD
-    const res = await fetch(`https://api.github.com/users/${userName}`, {
-      headers: {
-        Authorization: `token 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`,
-      },
-    });
-    if (Response.status === 404) {
-      window.location = "/notfound";
-    } else {
-      const data = await res.json();
-=======
-      const res = await fetch(`https://api.github.com/users/${userName}`, {
-        headers: {
-          Authorization: `token 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`,
-        },
-      });
       if (Response.status === 404) {
         window.location = "/notfound";
       } else {
+        const res = await fetch(`https://api.github.com/users/${userName}`);
         const data = await res.json();
         dispatch({
           type: "GET_USER",
@@ -101,13 +73,13 @@ export const GithubProvider = ({ children }) => {
         });
       }
     } catch (err) {
->>>>>>> a45c658d6334662569d1179e15aeda48d3315fb4
       dispatch({
         type: "GET_USER",
         payload: [],
       });
       console.log(err.message);
     }
+    setLoading(false);
   };
 
   const setLoading = () => {
@@ -120,6 +92,13 @@ export const GithubProvider = ({ children }) => {
     dispatch({
       type: "SET_OPTION",
       payload: option,
+    });
+  };
+
+  const setGitHubUser = (username) => {
+    dispatch({
+      type: "SET_GITHUBUSER",
+      payload: username,
     });
   };
 
@@ -170,6 +149,8 @@ export const GithubProvider = ({ children }) => {
         searchRepos,
         friends: state.friends,
         setFriend,
+        setGitHubUser,
+        githubUser: state.githubUser,
       }}
     >
       {children}
