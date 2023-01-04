@@ -35,8 +35,9 @@ router.post(
       }
 
       const user = await User.create({ ...req.body, status: 0 });
+      const token = generateAccessToken(user.email);
 
-      return res.status(200).json(user);
+      return res.status(200).json({ token });
     } catch (err) {
       return res.status(403).json({ error: err.message });
     }

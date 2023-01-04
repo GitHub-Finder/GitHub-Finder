@@ -33,8 +33,9 @@ const Signup = () => {
       };
       setGitHubUser(name);
       const { data } = await axios(newUser);
-      navigate("/main");
       console.log(data);
+      localStorage.setItem("token", data.token);
+      navigate("/main");
     } catch (err) {
       console.log(err);
     }
