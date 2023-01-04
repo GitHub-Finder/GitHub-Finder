@@ -6,6 +6,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     trim: true,
+    unique: true,
   },
   email: {
     type: String,
@@ -18,6 +19,8 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  friends: [],
+  type: Array,
 });
 
 // set up pre-save middleware to create password
