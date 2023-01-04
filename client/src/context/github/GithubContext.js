@@ -14,6 +14,7 @@ export const GithubProvider = ({ children }) => {
     issue: {},
     option: "Users",
     friends: [],
+    githubUser: "",
   };
 
   // Using Reducer
@@ -94,6 +95,13 @@ export const GithubProvider = ({ children }) => {
     });
   };
 
+  const setGitHubUser = (username) => {
+    dispatch({
+      type: "SET_GITHUBUSER",
+      payload: username,
+    });
+  };
+
   const clearUsers = () => {
     dispatch({
       type: "CLEAR_USERS",
@@ -141,6 +149,8 @@ export const GithubProvider = ({ children }) => {
         searchRepos,
         friends: state.friends,
         setFriend,
+        setGitHubUser,
+        githubUser: state.githubUser,
       }}
     >
       {children}

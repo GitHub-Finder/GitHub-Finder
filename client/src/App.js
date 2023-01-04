@@ -7,7 +7,8 @@ import { GithubProvider } from "./context/github/GithubContext";
 import User from "./pages/User";
 import MyProfile from "./pages/MyProfile";
 import Repos from "./pages/Repos";
-import Login from "./pages/Login";
+import Login from "./components/Auth/Login";
+import Signup from "./components/Auth/Signup";
 import "./assets/style/App.css";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
               <Route path="main/users/:login" element={<User />} />
               <Route path="main/repos/:repo" element={<Repos />} />
               <Route path="/myprofile/:login" element={<MyProfile />} />
+              <Route path="/signup" element={<Signup />} />
               <Route path="/" element={<Login />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>

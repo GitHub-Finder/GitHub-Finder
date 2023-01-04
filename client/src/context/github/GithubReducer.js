@@ -71,6 +71,11 @@ const githubReducer = (state, action) => {
         ...state,
         loading: true,
       };
+    case "SET_GITHUBUSER":
+      return {
+        ...state,
+        githubUser: action.payload,
+      };
     default:
       return state;
   }
