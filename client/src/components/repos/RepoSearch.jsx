@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import Loading from "../Loading";
+import Loading from "../Utilities/Loading";
 import GithubContext from "../../context/github/GithubContext";
 import { Col, Row, Avatar, Select } from "antd";
 import { AiFillStar } from "react-icons/ai";

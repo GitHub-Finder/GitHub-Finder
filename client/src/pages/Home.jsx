@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import RepoSearch from "../components/repos/RepoSearch";
 import UserSearch from "../components/users/UserSearch";
 import GithubContext from "../context/github/GithubContext";
-import Search from "../components/Layout/Search";
+import Search from "../components/Search/Search";
 
 function Home() {
   const { users, repos, option } = useContext(GithubContext);

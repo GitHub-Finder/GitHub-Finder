@@ -9,33 +9,14 @@ import MyProfile from "./pages/MyProfile";
 import Repos from "./pages/Repos";
 import Login from "./pages/Login";
 import "./assets/style/App.css";
-import { FaGithub } from "react-icons/fa";
+import Nav from "./components/Layout/Nav";
 
 function App() {
-  const userName = "raykurbanov";
-  const { Header, Content } = Layout;
+  const { Content } = Layout;
   return (
     <GithubProvider>
       <Router>
         <Layout>
-          <Header>
-            <div className="wrapper">
-              <div className="logo">
-                <Link to={"/main"}>
-                  <FaGithub className="githubIcon" />
-                  GitHub Finder
-                </Link>
-              </div>
-              <div className="links">
-                <Link to={"/main"}>Home</Link>
-                <Link to={"/friends"}>Friends</Link>
-                <Link to={"/repositories"}>Repositories</Link>
-                <Link to={`/myprofile/${userName}`}>My Profile</Link>
-                <Link to={"/about"}>About</Link>
-                <Link to={"/"}>Logout</Link>
-              </div>
-            </div>
-          </Header>
           <Content>
             <Routes>
               <Route path="/main" element={<Home />} />

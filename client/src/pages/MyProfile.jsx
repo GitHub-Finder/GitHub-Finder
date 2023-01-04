@@ -5,7 +5,7 @@ import { BsArrowRightShort } from "react-icons/bs";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { GiStarsStack } from "react-icons/gi";
 import { GrBlog } from "react-icons/gr";
-import Loading from "../components/Loading";
+import Loading from "../components/Utilities/Loading";
 import Piechart from "../components/Charts/Piechart";
 import GithubContext from "../context/github/GithubContext";
 import { Card, Collapse } from "antd";
