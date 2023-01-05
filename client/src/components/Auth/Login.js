@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import Signup from "./Signup";
+import GithubContext from "../../context/github/GithubContext";
 
 const Login = () => {
+  const { setGitHubUser, githubUser } = useContext(GithubContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -28,10 +30,10 @@ const Login = () => {
         data: JSON.stringify({ email, password }),
       };
       const { data } = await axios(confirmUser);
-
-      console.log(data);
       localStorage.setItem("token", data.token);
       navigate("/main");
+      console.log(data.name);
+      setGitHubUser(data.name);
     } catch (err) {
       console.log(err);
     }

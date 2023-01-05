@@ -76,7 +76,7 @@ router.post(
       }
       console.log("TEST3");
       const token = generateAccessToken(user.email);
-      return res.status(200).json({ token });
+      return res.status(200).json({ token: token, name: user.name });
     } catch (err) {
       return res.status(403).json({ error: err.message });
     }
