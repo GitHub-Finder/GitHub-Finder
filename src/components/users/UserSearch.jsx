@@ -9,7 +9,7 @@ const style = {
 
 function UserSearch({ users }) {
   return (
-    <ul>
+    <div>
       <Row gutter={16}>
         {users?.map((el, idx) => (
           <Col span={6} className="gutter-row" key={idx}>
@@ -27,7 +27,7 @@ function UserSearch({ users }) {
           </Col>
         ))}
       </Row>
-    </ul>
+    </div>
   );
 }
 

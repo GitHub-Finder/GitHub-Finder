@@ -1,47 +1,42 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
+const bcrypt = require("bcrypt");
 
-const repoSchema = require('./Repo');
-const issueSchema = require('./Issue');
+const userSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    match: [/.+@.+\..+/, "Must match an email address!"],
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 5,
+  },
+});
 
-const userSchema = new Schema(
-    {
-      username: {
-        type: String,
-        required: true,
-        unique: true,
-      },
-      email: {
-        type: String,
-        required: true,
-        unique: true,
-        match: [/.+@.+\..+/, 'Must use a valid email address'],
-      },
-      password: {
-        type: String,
-        required: true,
-      },
-      savedRepos: [ repoSchema ],
-      savedIssues: [ issueSchema ],
-    },
-    {
-        toJSON: {
-          virtuals: true,
-        },
-      }   
-)
+// set up pre-save middleware to create password
+userSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("password")) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+    this.email = this.email.toLowerCase().trim();
+    this.name = this.email.toLowerCase().trim();
+  }
 
+  next();
+});
+
+// compare the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function (password) {
-    return bcrypt.compare(password, this.password);
-  };
+  return bcrypt.compare(password, this.password);
+};
 
-userSchema.virtual('repoCount').get(function () {
-    return this.savedRepos.length;
-  });
-
-userSchema.virtual('issueCount').get(function () {
-    return this.savedIssues.length;
-  });
-
-const User = model('User', userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;
