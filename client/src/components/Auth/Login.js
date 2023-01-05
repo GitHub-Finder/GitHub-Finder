@@ -2,8 +2,12 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import GithubContext from "../../context/github/GithubContext";
+import { BiHide } from "react-icons/bi";
+import { BiShowAlt } from "react-icons/bi";
 
 const Login = () => {
+  const [hidden, setHidden] = useState(true);
+  const [type, setType] = useState("password");
   const { setGitHubUser, githubUser } = useContext(GithubContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,27 +40,45 @@ const Login = () => {
       console.log(err);
     }
   };
+
+  const handleHidden = (e) => {
+    e.preventDefault();
+    setHidden(!hidden);
+    if (hidden) {
+      setType("password");
+    } else {
+      setType("text");
+    }
+  };
   return (
     <section className="login__container">
       <div className="login__form_container">
         <h1 className="login__title">Github Finder</h1>
         <form className="login__form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Enter email"
-            name="email"
-            required
-            className="login__input"
-            onChange={handleEmail}
-          />
-          <input
-            type="password"
-            placeholder="Enter password"
-            name="password"
-            required
-            className="login__input"
-            onChange={handlePassword}
-          />
+          <div className="inputField">
+            <input
+              type="text"
+              placeholder="Enter email"
+              name="email"
+              required
+              className="login__input"
+              onChange={handleEmail}
+            />
+          </div>
+          <div className="inputField">
+            <input
+              type={type}
+              placeholder="Enter password"
+              name="password"
+              required
+              className="login__input"
+              onChange={handlePassword}
+            />
+
+            <button onClick={handleHidden} id="hidePassword">
+              {hidden ? <BiHide /> : <BiShowAlt />}
+            </button>
+          </div>
           <button className="login__btn">Log In</button>
         </form>
         <Link to={"/signup"}>
