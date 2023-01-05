@@ -409,8 +409,12 @@ body {
   margin-left: 0;
 }
 
-signup config */ .signup__container {
-  margin: 20px 80px;
+.signup__container {
+  /* margin: 20px 80px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 .signup__form_container {
   width: 300px;
@@ -429,11 +433,11 @@ signup config */ .signup__container {
 .signup__form {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 80%;
   margin: 20px auto;
 }
 .signup__input {
-  margin-top: 15px;
+  /* margin-top: 15px; */
   height: 30px;
   border: none;
   font-size: 17px;
@@ -456,9 +460,11 @@ signup config */ .signup__container {
 }
 /* login config */
 .login__container {
-  margin: 20px 80px;
+  /* margin: 20px 80px; */
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 .login__form_container {
   width: 300px;
@@ -480,11 +486,10 @@ signup config */ .signup__container {
 .login__form {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 80%;
   margin: 20px auto;
 }
 .login__input {
-  margin-top: 15px;
   height: 30px;
   border: none;
   font-size: 17px;
@@ -499,4 +504,20 @@ signup config */ .signup__container {
   border: none;
   border-radius: 5px;
   align-self: center;
+}
+
+#hidePassword {
+  margin-left: -30px;
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 18px;
+}
+
+.inputField {
+  display: flex;
+}
+
+.inputField {
+  margin-bottom: 10px;
 }
