@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import GithubContext from "../../context/github/GithubContext";
 const Signup = () => {
-  const { setGitHubUser, githubUser } = useContext(GithubContext);
+  const { setGitHubUser } = useContext(GithubContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

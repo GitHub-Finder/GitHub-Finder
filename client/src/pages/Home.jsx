@@ -4,9 +4,10 @@ import UserSearch from "../components/users/UserSearch";
 import GithubContext from "../context/github/GithubContext";
 import Search from "../components/Search/Search";
 import Nav from "../components/Layout/Nav";
+import Login from "../components/Auth/Login";
 
 function Home() {
-  const { users, repos, option } = useContext(GithubContext);
+  const { users, repos, option, githubUser } = useContext(GithubContext);
 
   const checkOption = (option) => {
     switch (option) {
@@ -19,7 +20,9 @@ function Home() {
     }
   };
 
-  return (
+  return !githubUser ? (
+    <Login />
+  ) : (
     <div>
       <Nav />
       <div className="searchContainer">

@@ -3,17 +3,21 @@ import { FaGithub } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { Layout } from "antd";
 import GithubContext from "../../context/github/GithubContext";
+import Login from "../Auth/Login";
 
 function Nav() {
-  const { githubUser } = useContext(GithubContext);
+  const { githubUser, setGitHubUser } = useContext(GithubContext);
   const { Header } = Layout;
   const navigate = useNavigate();
   const removeToken = () => {
     localStorage.removeItem("token");
     navigate("/");
+    setGitHubUser(null);
   };
 
-  return (
+  return !githubUser ? (
+    <Login />
+  ) : (
     <Header>
       <div className="wrapper">
         <div className="logo">

@@ -6,6 +6,7 @@ import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { GiStarsStack } from "react-icons/gi";
 import { GrBlog } from "react-icons/gr";
 import Nav from "../components/Layout/Nav";
+import Login from "../components/Auth/Login";
 import Loading from "../components/Utilities/Loading";
 import Piechart from "../components/Charts/Piechart";
 import GithubContext from "../context/github/GithubContext";
@@ -18,9 +19,9 @@ function User() {
   const [repos, setRepos] = useState([]);
   const [input, setInput] = useState("");
   const [check, setCheck] = useState(false);
-  const { user, searchUser, setFriend, friends } = useContext(GithubContext);
+  const { user, searchUser, setFriend, friends, githubUser } =
+    useContext(GithubContext);
   const { login } = useParams();
-  console.log(repos);
 
   const handleCheck = (e) => {
     setCheck(e.target.checked);
@@ -91,7 +92,9 @@ function User() {
     return arrayOfLanguages;
   };
 
-  return (
+  return !githubUser ? (
+    <Login />
+  ) : (
     <div>
       <Nav />
       <div className="userMainWrapper">

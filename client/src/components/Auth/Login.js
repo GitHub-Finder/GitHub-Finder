@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import Signup from "./Signup";
 import GithubContext from "../../context/github/GithubContext";
 
 const Login = () => {
@@ -32,7 +31,6 @@ const Login = () => {
       const { data } = await axios(confirmUser);
       localStorage.setItem("token", data.token);
       navigate("/main");
-      console.log(data.name);
       setGitHubUser(data.name);
     } catch (err) {
       console.log(err);

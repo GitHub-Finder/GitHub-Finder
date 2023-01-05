@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import Nav from "../components/Layout/Nav";
+import Login from "../components/Auth/Login";
 import { useParams } from "react-router-dom";
 import { ImLocation } from "react-icons/im";
 import { BsArrowRightShort } from "react-icons/bs";
@@ -18,8 +19,10 @@ function User() {
   const [repos, setRepos] = useState([]);
   const [input, setInput] = useState("");
   const [check, setCheck] = useState(false);
-  const { user, searchUser, setFriend, friends } = useContext(GithubContext);
+
   const { login } = useParams();
+  const { user, searchUser, setFriend, friends, githubUser } =
+    useContext(GithubContext);
 
   const handleCheck = (e) => {
     setCheck(e.target.checked);
@@ -90,7 +93,9 @@ function User() {
     return arrayOfLanguages;
   };
 
-  return (
+  return !githubUser ? (
+    <Login />
+  ) : (
     <div>
       <Nav />
       <div className="userMainWrapper">

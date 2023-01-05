@@ -14,7 +14,7 @@ export const GithubProvider = ({ children }) => {
     issue: {},
     option: "Users",
     friends: [],
-    githubUser: "",
+    githubUser: null,
   };
 
   // Using Reducer
