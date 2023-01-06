@@ -6,7 +6,7 @@ import { BiHide } from "react-icons/bi";
 import { BiShowAlt } from "react-icons/bi";
 
 const Login = () => {
-  const [hidden, setHidden] = useState(true);
+  const [hidden, setHidden] = useState(false);
   const [type, setType] = useState("password");
   const { setGitHubUser, githubUser } = useContext(GithubContext);
   const [email, setEmail] = useState("");
@@ -76,7 +76,7 @@ const Login = () => {
             />
 
             <button onClick={handleHidden} id="hidePassword">
-              {hidden ? <BiHide /> : <BiShowAlt />}
+              {!hidden ? <BiHide /> : <BiShowAlt />}
             </button>
           </div>
           <button className="login__btn">Log In</button>

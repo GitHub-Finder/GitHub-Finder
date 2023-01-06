@@ -64,12 +64,14 @@ function RepoSearch({ repos }) {
   };
 
   const { loading } = useContext(GithubContext);
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <div>
-      {repos.length > 0 && (
+      {repos?.length > 0 && (
         <div className="repoFilter">
           <div className="checkBox">
-            <label htmlFor="hasHomePage">Has Home Page</label>
+            <label htmlFor="hasHomePage">Home Page</label>
             <input type="checkbox" onChange={handleCheck} />
           </div>
           <div className="dropdown">
@@ -119,97 +121,80 @@ function RepoSearch({ repos }) {
         </div>
       )}
       <div className="repoList">
-        {loading ? (
-          <Loading />
-        ) : (
-          <Row gutter={16}>
-            {filterSearch(repos)?.map((repo, idx) => (
-              <Col span={12} className="gutter-row" key={idx}>
-                <div style={style} className="repoWrapper">
-                  <div className="avatarRepo">
-                    <Avatar
-                      size={54}
-                      src={repo.owner.avatar_url}
-                      className="avatar"
-                    />
-                    <p className="repoOwner">
-                      <a target="_blank" href={repo.owner.html_url}>
-                        {repo.owner.login}
+        (
+        <Row gutter={16}>
+          {filterSearch(repos)?.map((repo, idx) => (
+            <Col span={12} className="gutter-row" key={idx}>
+              <div style={style} className="repoWrapper">
+                <div className="avatarRepo">
+                  <Avatar
+                    size={54}
+                    src={repo.owner.avatar_url}
+                    className="avatar"
+                  />
+                  <p className="repoOwner">
+                    <a target="_blank" href={repo.owner.html_url}>
+                      {repo.owner.login}
+                    </a>
+                  </p>
+                </div>
+                <div className="subUserContainer">
+                  <p className="repoName">
+                    <span className="repoNameHighlight">{repo.name}</span>{" "}
+                    <AiFillStar />
+                    {repo.stargazers_count}
+                  </p>
+                  <p className="repoDescriptionParagraph">
+                    <strong>Description:</strong> {repo.description}
+                  </p>
+                  {repo.homepage && (
+                    <p className="repoDescription">
+                      <strong>Home Page:</strong>{" "}
+                      <a target="_blank" href={repo.homepage}>
+                        {repo.homepage}
                       </a>
                     </p>
+                  )}
+                  {repo.language && (
+                    <p className="repoDescription">
+                      <strong>Language:</strong>{" "}
+                      <span className="repoLanguage">{repo.language}</span>
+                    </p>
+                  )}
+                  <p className="owner">
+                    <strong>Type:</strong>{" "}
+                    <span className={"ownerType-" + repo.owner.type}>
+                      {repo.owner.type}
+                    </span>
+                  </p>
+                </div>
+                <div className="repoContent">
+                  <div className="created_at">
+                    {repo.updated_at.slice(0, 10)}
                   </div>
-                  <div className="subUserContainer">
-                    <p className="repoName">
-                      <span className="repoNameHighlight">{repo.name}</span>{" "}
-                      <AiFillStar />
-                      {repo.stargazers_count}
-                    </p>
-                    <p className="repoDescriptionParagraph">
-                      <strong>Description:</strong> {repo.description}
-                    </p>
-                    {repo.homepage && (
-                      <p className="repoDescription">
-                        <strong>Home Page:</strong>{" "}
-                        <a target="_blank" href={repo.homepage}>
-                          {repo.homepage}
-                        </a>
-                      </p>
-                    )}
-                    {repo.language && (
-                      <p className="repoDescription">
-                        <strong>Language:</strong>{" "}
-                        <span className="repoLanguage">{repo.language}</span>
-                      </p>
-                    )}
-                    <p className="owner">
-                      <strong>Type:</strong>{" "}
-                      <span className={"ownerType-" + repo.owner.type}>
-                        {repo.owner.type}
-                      </span>
-                    </p>
+                  <div className="linkToRepo">
+                    <a
+                      className="linkToRepo"
+                      target="_blank"
+                      href={repo.html_url}
+                    >
+                      View Repo
+                    </a>
                   </div>
-                  <div className="repoContent">
-                    <div className="created_at">
-                      {repo.updated_at.slice(0, 10)}
-                    </div>
-                    <div className="linkToRepo">
-                      <a
-                        className="linkToRepo"
-                        target="_blank"
-                        href={repo.html_url}
-                      >
-                        View Repo
-                      </a>
-                    </div>
-                    {/* {repo.open_issues && (
-                      <div>
-                        <div>
-                          <strong>Issues:</strong> {repo.open_issues}
-                        </div>
-                        <div className="linkToIssues">
-                          <a
-                            className="linkToIssues"
-                            target="_blank"
-                            href={`https://github.com/repos/${repo.owner.login}/${repo.name}/issues`}
-                          >
-                            View Issues
-                          </a>
-                        </div>
-                      </div>
-                    )} */}
-                    <div className="addRepo">
-                      <span className="addBtnSpan">
-                        <button className="btnAddRepo">
-                          <span className="addSpan">Add</span> <GrAddCircle />
-                        </button>
-                      </span>
-                    </div>
+
+                  <div className="addRepo">
+                    <span className="addBtnSpan">
+                      <button className="btnAddRepo">
+                        <span className="addSpan">Add</span> <GrAddCircle />
+                      </button>
+                    </span>
                   </div>
                 </div>
-              </Col>
-            ))}
-          </Row>
-        )}
+              </div>
+            </Col>
+          ))}
+        </Row>
+        )
       </div>
     </div>
   );

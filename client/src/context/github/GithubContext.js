@@ -114,6 +114,9 @@ export const GithubProvider = ({ children }) => {
       type: "CLEAR_REPOSITORIES",
       payload: [],
     });
+    dispatch({
+      type: "SET_LOADING",
+    });
   };
 
   const clearIssues = () => {
