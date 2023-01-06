@@ -3,6 +3,7 @@ import GithubContext from "../../context/github/GithubContext";
 import { GoSearch } from "react-icons/go";
 import { MdClear } from "react-icons/md";
 import { Radio } from "antd";
+
 function Search() {
   const [input, setInput] = useState("");
   const {
@@ -14,10 +15,12 @@ function Search() {
     searchRepos,
     users,
     repos,
+    loading,
   } = useContext(GithubContext);
   const handleInput = (e) => {
     setInput(e.target.value);
   };
+  console.log(loading);
 
   const handleSubmit = () => {
     if (!input) {
@@ -33,7 +36,6 @@ function Search() {
 
   const handleChange = (e) => {
     setOption(e.target.value);
-    clearData();
   };
 
   const handleKeyDown = (e) => {
@@ -62,7 +64,7 @@ function Search() {
         )}
       </div>
       <div className="radioButtons">
-        <Radio.Group defaultValue="Users" buttonStyle="solid">
+        <Radio.Group defaultValue={option} buttonStyle="solid">
           <Radio.Button
             value="Users"
             checked={option === "Users" ? "checked" : ""}
@@ -78,22 +80,6 @@ function Search() {
             Repositories
           </Radio.Button>
         </Radio.Group>
-        {/* <input
-          type="radio"
-          value="Users"
-          name="gender"
-          checked={option === "Users" ? "checked" : ""}
-          onChange={handleChange}
-        />
-        Users
-        <input
-          type="radio"
-          value="Repositories"
-          name="gender"
-          onChange={handleChange}
-          checked={option === "Repositories" ? "checked" : ""}
-        />
-        Repositories */}
       </div>
     </div>
   );

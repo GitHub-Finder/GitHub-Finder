@@ -50,7 +50,7 @@ function User() {
   };
 
   const getUserRepos = async (login) => {
-    setLoading(true);
+    // setLoading();
     try {
       const response = await fetch(
         `https://api.github.com/users/${login}/repos?per_page=100&sort=created&order=desc`
@@ -60,7 +60,6 @@ function User() {
     } catch (err) {
       console.log(err.message);
     }
-    setLoading(false);
   };
   useEffect(() => {
     searchUser(login);
