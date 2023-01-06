@@ -14,6 +14,9 @@ const style = {
 };
 
 function RepoSearch({ repos }) {
+  const { loading } = useContext(GithubContext);
+  console.log(loading);
+
   const [filter, setFilter] = useState({
     hasHomePage: false,
     searchBy: "Stars",
@@ -62,8 +65,8 @@ function RepoSearch({ repos }) {
       return sorting(array);
     }
   };
+  console.log(loading);
 
-  const { loading } = useContext(GithubContext);
   return loading ? (
     <Loading />
   ) : (
@@ -121,7 +124,6 @@ function RepoSearch({ repos }) {
         </div>
       )}
       <div className="repoList">
-        (
         <Row gutter={16}>
           {filterSearch(repos)?.map((repo, idx) => (
             <Col span={12} className="gutter-row" key={idx}>
@@ -194,7 +196,6 @@ function RepoSearch({ repos }) {
             </Col>
           ))}
         </Row>
-        )
       </div>
     </div>
   );

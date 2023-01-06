@@ -1,9 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Combo&display=swap");
 
 body {
-  background-image: url("https://media.istockphoto.com/id/1285395672/photo/abstract-futuristic-with-connection-lines-on-blue-background-plexus-structure-concept-of.jpg?b=1&s=612x612&w=0&k=20&c=AZwPyEY1H04PwBLvEIR8khtLRA-RzozIm5OeIPgQJRY=");
+  background-image: url("https://media.istockphoto.com/id/1285395672/photo/abstract-futuristic-with-connection-lines-on-blue-background-plexus-structure-concept-of.jpg?b=1&s=612x612&w=0&k=20&c=AZwPyEY1H04PwBLvEIR8khtLRA-RzozIm5OeIPgQJRY=") !important;
   /* background-repeat: no-repeat; */
   background-size: cover;
+
+  background-repeat: no-repeat !important;
+  object-fit: cover !important;
 }
 
 .links {
@@ -15,11 +18,12 @@ body {
 }
 
 .searchContainer {
-  margin-top: 75px;
+  margin: 0;
+  /* margin-top: 75px; */
   display: flex;
   justify-content: center;
   /* height: 80%; */
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
 }
 .ant-layout-content {
   background-color: #fff;

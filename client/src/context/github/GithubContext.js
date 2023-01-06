@@ -21,17 +21,14 @@ export const GithubProvider = ({ children }) => {
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
   const searchUsers = async (text) => {
+    setLoading();
     const res = await fetch(
       `https://api.github.com/search/users?q=${text}&per_page=100`
     );
     const { items } = await res.json();
-    console.log(items);
     dispatch({
       type: "GET_USERS",
       payload: items,
-    });
-    dispatch({
-      type: "SET_LOADING",
     });
   };
 
@@ -48,20 +45,20 @@ export const GithubProvider = ({ children }) => {
     });
   };
 
-  const searchIssues = async (text) => {
-    const res = await fetch(
-      `https://api.github.com/search/issues?q=${text}&per_page=100`
-    );
-    const { items } = await res.json();
-    dispatch({
-      type: "GET_ISSUES",
-      payload: items,
-    });
-  };
+  // const searchIssues = async (text) => {
+  //   const res = await fetch(
+  //     `https://api.github.com/search/issues?q=${text}&per_page=100`
+  //   );
+  //   const { items } = await res.json();
+  //   dispatch({
+  //     type: "GET_ISSUES",
+  //     payload: items,
+  //   });
+  // };
 
   const searchUser = async (userName) => {
     try {
-      setLoading();
+      setLoading(false);
       if (Response.status === 404) {
         window.location = "/notfound";
       } else {
@@ -79,7 +76,6 @@ export const GithubProvider = ({ children }) => {
       });
       console.log(err.message);
     }
-    setLoading(false);
   };
 
   const setLoading = () => {
@@ -114,17 +110,14 @@ export const GithubProvider = ({ children }) => {
       type: "CLEAR_REPOSITORIES",
       payload: [],
     });
-    dispatch({
-      type: "SET_LOADING",
-    });
   };
 
-  const clearIssues = () => {
-    dispatch({
-      type: "CLEAR_ISSUES",
-      payload: [],
-    });
-  };
+  // const clearIssues = () => {
+  //   dispatch({
+  //     type: "CLEAR_ISSUES",
+  //     payload: [],
+  //   });
+  // };
 
   const setFriend = (login) => {
     dispatch({
@@ -146,14 +139,13 @@ export const GithubProvider = ({ children }) => {
         searchUser,
         clearUsers,
         clearRepos,
-        clearIssues,
         setOption,
-        searchIssues,
         searchRepos,
         friends: state.friends,
         setFriend,
         setGitHubUser,
         githubUser: state.githubUser,
+        setLoading,
       }}
     >
       {children}

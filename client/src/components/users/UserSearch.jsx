@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Col, Row, Avatar } from "antd";
+import GithubContext from "../../context/github/GithubContext";
+import Loading from "../Utilities/Loading";
 import { Link } from "react-router-dom";
 import "../../assets/style/user.css";
 const style = {
@@ -8,8 +10,12 @@ const style = {
 };
 
 function UserSearch({ users }) {
-  return (
-    <div style={{ paddingTop: "18px", paddingLeft: "10px" }}>
+  const { loading } = useContext(GithubContext);
+
+  return loading ? (
+    <Loading />
+  ) : (
+    <div>
       <Row gutter={16}>
         {users?.map((el, idx) => (
           <Col span={6} className="gutter-row" key={idx}>
