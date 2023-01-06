@@ -78,22 +78,6 @@ function Search() {
             Repositories
           </Radio.Button>
         </Radio.Group>
-        {/* <input
-          type="radio"
-          value="Users"
-          name="gender"
-          checked={option === "Users" ? "checked" : ""}
-          onChange={handleChange}
-        />
-        Users
-        <input
-          type="radio"
-          value="Repositories"
-          name="gender"
-          onChange={handleChange}
-          checked={option === "Repositories" ? "checked" : ""}
-        />
-        Repositories */}
       </div>
     </div>
   );

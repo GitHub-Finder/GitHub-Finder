@@ -1,7 +1,13 @@
 import React from "react";
+import Nav from "../components/Layout/Nav";
 
 function About() {
-  return <div>ABOUT</div>;
+  return (
+    <div>
+      <Nav />
+      <h2>About</h2>
+    </div>
+  );
 }
 
 export default About;
