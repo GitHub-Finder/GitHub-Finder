@@ -23,7 +23,7 @@ body {
 }
 .ant-layout-content {
   background-color: #fff;
-  height: 100px;
+  height: 0px;
 }
 
 .usersWrapper {
@@ -94,6 +94,19 @@ body {
 
 .profile-data {
   width: 40%;
+  color: white;
+}
+
+.searchInfo {
+  color: #fff;
+}
+
+.searchInput {
+  color: #fff;
+}
+
+.hasHomePage {
+  color: #fff;
 }
 .chart {
   display: flex;
@@ -104,6 +117,7 @@ body {
 .chart h2 {
   text-align: center;
   width: 100%;
+  color: #fff;
 }
 .type,
 .hireable {
@@ -384,9 +398,9 @@ body {
   justify-content: center;
   align-items: center;
   margin: 3px 5px;
-  background-color: rgb(45, 88, 243);
+  background-color: blue;
   border-radius: 10px;
-  color: #fff;
+  color: black;
   border: none;
   outline: none;
 }
