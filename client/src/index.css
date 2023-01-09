@@ -552,6 +552,11 @@ label {
     margin-left: 10%;
     position: sticky;
   }
+  .links {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+  }
 }
 @media only screen and (max-width: 910px) {
   .profile-data {
@@ -559,6 +564,11 @@ label {
     color: white;
     margin-left: 20%;
     position: sticky;
+  }
+  .links {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
   }
 }
 
@@ -587,14 +597,24 @@ label {
     /* margin-left: 50%; */
     margin-left: 40%;
   }
+  .links {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+  }
 }
-@media only screen and (max-width: 615px) {
+@media only screen and (max-width: 680px) {
   .profile-data {
     width: 35%;
     color: white;
     position: absolute;
     /* margin-left: 50%; */
     margin-left: 50%;
+  }
+  .links {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 }
 
