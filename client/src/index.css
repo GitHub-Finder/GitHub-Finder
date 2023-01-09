@@ -545,6 +545,23 @@ label {
   background-color: rgba(9, 94, 123, 0.553) !important;
 }
 
+@media only screen and (max-width: 1260px) {
+  .profile-data {
+    width: 35%;
+    color: white;
+    margin-left: 10%;
+    position: sticky;
+  }
+}
+@media only screen and (max-width: 910px) {
+  .profile-data {
+    width: 35%;
+    color: white;
+    margin-left: 20%;
+    position: sticky;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .searchContainer {
     justify-content: center;
@@ -569,6 +586,15 @@ label {
     position: absolute;
     /* margin-left: 50%; */
     margin-left: 40%;
+  }
+}
+@media only screen and (max-width: 615px) {
+  .profile-data {
+    width: 35%;
+    color: white;
+    position: absolute;
+    /* margin-left: 50%; */
+    margin-left: 50%;
   }
 }
 
