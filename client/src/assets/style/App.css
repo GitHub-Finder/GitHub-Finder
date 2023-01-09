@@ -7,6 +7,8 @@
 .logo a {
   width: 20%;
   color: #fff;
+  font-family: monospace;
+  font-size: large;
 }
 .wrapper {
   display: flex;
@@ -30,6 +32,7 @@
   height: 30px;
   border: 1px solid rgba(50, 49, 49, 0.921);
   border-radius: 10px;
+  font-family: monospace;
 }
 /* 
 .githubIcon {
@@ -91,4 +94,5 @@ input[type="radio"] {
 
 a {
   color: #fff;
+  font-family: monospace;
 }
