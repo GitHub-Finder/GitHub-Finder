@@ -8,7 +8,7 @@ import { BiShowAlt } from "react-icons/bi";
 const Login = () => {
   const [hidden, setHidden] = useState(false);
   const [type, setType] = useState("password");
-  const { setGitHubUser, githubUser } = useContext(GithubContext);
+  const { setGitHubUser } = useContext(GithubContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
