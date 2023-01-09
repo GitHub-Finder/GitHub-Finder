@@ -88,3 +88,7 @@
 input[type="radio"] {
   width: 15px;
 }
+
+a {
+  color: #fff;
+}

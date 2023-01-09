@@ -535,3 +535,7 @@ body {
 .inputField {
   margin-bottom: 10px;
 }
+
+label {
+  color: #fff;
+}
