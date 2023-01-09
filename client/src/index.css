@@ -93,8 +93,9 @@ body {
 }
 
 .profile-data {
-  width: 40%;
+  width: 35%;
   color: white;
+  margin-left: 10px;
 }
 
 .searchInfo {
@@ -542,4 +543,71 @@ label {
 
 .ant-layout-header {
   background-color: rgba(9, 94, 123, 0.553) !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .searchContainer {
+    justify-content: center;
+  }
+  .ant-layout-header {
+    align-items: center;
+  }
+  .chart {
+    display: none;
+  }
+
+  .wrapper-top {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 50px;
+    justify-content: center;
+    width: 10%;
+  }
+  .profile-data {
+    width: 35%;
+    color: white;
+    position: absolute;
+    /* margin-left: 50%; */
+    margin-left: 40%;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  /* .wrapper {
+    display: flex;
+    justify-content: center;
+  } */
+  .repoWrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    align-content: center !important;
+  }
+  .ant-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .chart {
+    display: none;
+  }
+  .profile-data {
+    width: 35%;
+    color: white;
+    position: sticky;
+    /* margin-left: 50%; */
+    margin-left: 40%;
+  }
+  .reposSearch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    flex-direction: column;
+  }
 }
