@@ -1,13 +1,687 @@
+@import url("https://fonts.googleapis.com/css2?family=Combo&display=swap");
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://media.istockphoto.com/id/1285395672/photo/abstract-futuristic-with-connection-lines-on-blue-background-plexus-structure-concept-of.jpg?b=1&s=612x612&w=0&k=20&c=AZwPyEY1H04PwBLvEIR8khtLRA-RzozIm5OeIPgQJRY=");
+  /* background-repeat: no-repeat; */
+  background-size: cover;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h3 {
+  font-family: monospace;
+  font-size: x-large;
+}
+h2,
+p {
+  font-family: monospace;
+}
+
+.links {
+  width: 50%;
+}
+
+button {
+  font-family: monospace;
+}
+
+.logout_btn,
+.container-1,
+.container-2,
+.ant-select-selection-item {
+  font-family: monospace;
+}
+
+.logo {
+  width: 50%;
+}
+
+.searchContainer {
+  margin-top: 75px;
+  display: flex;
+  justify-content: center;
+  /* height: 80%; */
+  margin-bottom: 15px;
+}
+.ant-layout-content {
+  background-color: #fff;
+  height: 0px;
+}
+
+.usersWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 55px;
+  height: 100%;
+  padding: 15px 10px;
+}
+
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.users {
+  background-color: #fff;
+  height: 100%;
+  margin-bottom: 25px;
+  width: 100%;
+}
+.wrapper-lower {
+  display: flex;
+  justify-content: center;
+  height: 10%;
+  background-color: red;
+}
+.container-upper {
+  height: 90%;
+  background-color: red;
+}
+
+.userContainer {
+  align-items: center;
+  justify-content: center;
+}
+.githubIcon {
+  margin-right: 10px;
+  transform: scale(1.5);
+}
+
+.userMainWrapper {
+  margin-bottom: 50px;
+}
+
+.wrapper-top {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 50px;
+  justify-content: center;
+  width: 100%;
+}
+
+.wrapper-bottom {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 80%;
+}
+
+.profile-pic {
+  width: 20%;
+  margin-right: 10px;
+}
+
+.profile-data {
+  width: 35%;
+  color: white;
+  margin-left: 10px;
+  font-family: monospace;
+}
+
+.searchInfo {
+  color: #fff;
+}
+
+.searchInput {
+  color: #fff;
+}
+
+.hasHomePage {
+  color: #fff;
+}
+.chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+.chart h2 {
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  font-family: monospace;
+}
+.type,
+.hireable {
+  padding: 2px 5px;
+  border-radius: 10px;
+}
+
+.type {
+  background-color: rgb(70, 70, 233);
+}
+
+.hireable {
+  background-color: greenyellow;
+}
+
+.bio {
+  padding: 2px 10px;
+  background-color: rgb(49, 192, 240);
+  border-radius: 15px;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.btnAdd {
+  padding: 2px 2px;
+  outline: none;
+  background: none;
+  border-radius: 10px;
+  border: none;
+  width: 30px;
+  height: 20px;
+  margin-left: 5px;
+  background-color: rgb(28, 141, 255);
+  color: #fff;
+  transform: scale(1.2);
+}
+
+.ant-card-meta-description,
+.ant-card-meta-title,
+.addUser {
+  text-align: center;
+}
+
+.btnAdd:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.btnAdd:active {
+  transform: scale(0.95);
+}
+
+.reposSearch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.reposSearch input {
+  height: 25px;
+  width: 250px;
+  border-radius: 10px;
+  border: 1px solid blue;
+  padding: 2px 10px;
+}
+
+.collapse {
+  margin-bottom: 5px;
+  background-color: rgb(200, 206, 212);
+}
+
+.repoHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.loadingSpinner {
+  text-align: center;
+}
+
+.repoList {
+  width: 100%;
+  /* padding: 10px; */
+  display: flex;
+  justify-content: center;
+}
+
+.repoGrid {
+  border: 1px solid black;
+  margin: 5px 5px;
+  display: flex;
+}
+
+.repoWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px 5px;
+}
+
+.subUserContainer {
+  width: 73%;
+}
+.repoDescription {
+  font-size: 14px;
+  text-align: left;
+}
+
+.repoName {
+  font-size: 16px;
+  font-weight: bold;
+}
+.avatarRepo {
+  width: 12%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.repoContent {
+  width: 13%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 14px;
+  align-items: center;
+}
+
+.repoOwner {
+  margin: 2px;
+  font-size: 12px;
+}
+
+.linkToRepo {
+  text-decoration: underline;
+  color: grey;
+  font-style: italic;
+}
+
+.linkToRepo:hover {
+  transform: scale(1.1);
+  color: black;
+}
+
+.subUserContainer p {
+  margin: 0;
+}
+
+.addSpan {
+  margin-right: 2px;
+}
+
+.btnAddRepo {
+  justify-content: center;
+  align-items: center;
+  padding: 2px 2px;
+  outline: none;
+  background: none;
+  border-radius: 10px;
+  border: none;
+  width: 60px;
+  height: 20px;
+  margin-left: 5px;
+  background-color: rgb(43 211 246);
+  color: #fff;
+}
+
+.btnAddRepo:hover {
+  background-color: rgb(1, 122, 243);
+  transform: scale(0.95);
+  cursor: pointer;
+}
+
+.btnAddRepo:active {
+  transform: scale(0.92);
+}
+
+.repoLanguage {
+  padding: 2px 5px;
+  /* background-color: aqua; */
+  border-radius: 10px;
+}
+
+.repoFilter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px auto;
+}
+
+.checkBox {
+  margin: 5px 15px;
+}
+
+.ownerType-User {
+  /* background-color: rgb(251, 6, 243); */
+}
+
+.ownerType-Organization {
+  /* background-color: orange; */
+}
+
+.ownerType-User,
+.ownerType-Organization {
+  padding: 0px 5px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.owner {
+  font-size: 14px;
+}
+
+.userReposWrapper {
+  display: flex;
+}
+
+.userReposContainer-left {
+  width: 50%;
+}
+.userReposContainer-right {
+  width: 50%;
+}
+
+.linkToIssues {
+  color: grey;
+  font-size: 14px;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.linkToIssues:hover {
+  transform: scale(1.1);
+  color: black;
+}
+
+.repoWrapper p {
+  margin-bottom: 2px;
+}
+
+.repoDescriptionParagraph {
+  font-family: monospace, cursive;
+  font-size: 14px;
+  text-align: left;
+  font-style: italic;
+}
+
+.repoNameHighlight {
+  padding: 0px 5px;
+  border-radius: 10px;
+  font-size: larger;
+}
+
+.directionDropdown {
+  margin: auto 15px;
+}
+
+.userRepoContainer {
+  display: flex;
+  width: 100%;
+}
+
+.userPanel {
+  width: 95%;
+}
+
+.userRepoAddBtn {
+  width: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3px 5px;
+  background-color: grey;
+  border-radius: 10px;
+  color: black;
+  border: none;
+  outline: none;
+  font-family: monospace;
+}
+
+.userRepoAddBtn:hover {
+  background-color: rgb(3, 56, 247);
+  transform: scale(0.97);
+  cursor: pointer;
+}
+.userRepoAddBtn:active {
+  transform: scale(0.94);
+}
+
+.checkBox input {
+  width: 15px;
+}
+.checkBox {
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+}
+
+.signup__container {
+  /* margin: 20px 80px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.signup__form_container {
+  width: 300px;
+  height: 400px;
+  background-color: rgb(213, 212, 212);
+  box-shadow: 3px 2px 9px 3px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 3px 2px 9px 3px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 3px 2px 9px 3px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+}
+.signup__title {
+  font-size: 26px;
+  padding-top: 40px;
+  padding-left: 55px;
+}
+.signup__form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 20px auto;
+}
+.signup__input {
+  /* margin-top: 15px; */
+  height: 30px;
+  border: none;
+  font-size: 17px;
+  padding: 10px 10px;
+  border-radius: 5px;
+}
+.signup__btn_container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.signup__btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.signup__btn:hover {
+  background-color: rgb(238, 221, 224);
+}
+/* login config */
+.login__container {
+  /* margin: 20px 80px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.login__form_container {
+  width: 300px;
+  height: 400px;
+  background-color: rgb(213, 212, 212);
+  box-shadow: 3px 2px 9px 3px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 3px 2px 9px 3px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 3px 2px 9px 3px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login__title {
+  font-size: 26px;
+  text-align: center;
+  font-family: monospace;
+}
+.login__form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 20px auto;
+}
+.login__input {
+  height: 30px;
+  border: none;
+  font-size: 17px;
+  padding: 10px 10px;
+  border-radius: 5px;
+  font-family: monospace;
+}
+.login__btn {
+  width: 70px;
+  margin-top: 20px;
+
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  align-self: center;
+  font-family: monospace;
+}
+
+#hidePassword {
+  margin-left: -30px;
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 18px;
+}
+
+.inputField {
+  display: flex;
+}
+
+.inputField {
+  margin-bottom: 10px;
+}
+
+label {
+  color: #fff;
+  font-family: monospace;
+  font-size: larger;
+}
+
+.ant-layout-header {
+  background-color: rgba(9, 94, 123, 0.553) !important;
+}
+
+@media only screen and (max-width: 1260px) {
+  .profile-data {
+    width: 35%;
+    color: white;
+    margin-left: 10%;
+    position: sticky;
+  }
+  .links {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+  }
+}
+@media only screen and (max-width: 910px) {
+  .profile-data {
+    width: 35%;
+    color: white;
+    margin-left: 20%;
+    position: sticky;
+  }
+  .links {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .searchContainer {
+    justify-content: center;
+  }
+  .ant-layout-header {
+    align-items: center;
+  }
+  .chart {
+    display: none;
+  }
+
+  .wrapper-top {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 50px;
+    justify-content: center;
+    width: 10%;
+  }
+  .profile-data {
+    width: 35%;
+    color: white;
+    position: absolute;
+    /* margin-left: 50%; */
+    margin-left: 40%;
+  }
+  .links {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 680px) {
+  .profile-data {
+    width: 35%;
+    color: white;
+    position: absolute;
+    /* margin-left: 50%; */
+    margin-left: 50%;
+  }
+  .links {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  /* .wrapper {
+    display: flex;
+    justify-content: center;
+  } */
+  .repoWrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    align-content: center !important;
+  }
+  .ant-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .chart {
+    display: none;
+  }
+  .profile-data {
+    width: 35%;
+    color: white;
+    position: sticky;
+    /* margin-left: 50%; */
+    margin-left: 40%;
+  }
+  .reposSearch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    flex-direction: column;
+  }
 }

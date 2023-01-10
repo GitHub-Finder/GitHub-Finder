@@ -1,0 +1,37 @@
+.userContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.subUserContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.avatar:hover {
+  transform: scale(1.75);
+  z-index: 99999;
+  transition: 0.3s ease-in-out;
+}
+.avatar {
+  transition: 0.3s ease-in-out;
+}
+
+.linkToProfile {
+  margin: 2px auto;
+  padding: 0;
+  color: grey;
+}
+
+.linkToProfile:hover {
+  text-decoration: underline;
+}
+.linkToProfile:active {
+  transform: scale(0.95);
+}

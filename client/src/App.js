@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
+import { Layout } from "antd";
+import { GithubProvider } from "./context/github/GithubContext";
+import User from "./pages/User";
+import MyProfile from "./pages/MyProfile";
+import Repos from "./pages/Repos";
+import Login from "./components/Auth/Login";
+import Signup from "./components/Auth/Signup";
+import "./assets/style/App.css";
 
 function App() {
+  const { Content } = Layout;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GithubProvider>
+      <Router>
+        <Layout>
+          <Content>
+            <Routes>
+              <Route path="/main" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/notfound" element={<NotFound />} />
+              <Route path="main/users/:login" element={<User />} />
+              <Route path="main/repos/:repo" element={<Repos />} />
+              <Route path="/myprofile/:login" element={<MyProfile />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/" element={<Login />} />
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+          </Content>
+        </Layout>
+      </Router>
+    </GithubProvider>
   );
 }
 

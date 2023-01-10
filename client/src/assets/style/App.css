@@ -1,0 +1,98 @@
+.links {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+}
+
+.logo a {
+  width: 20%;
+  color: #fff;
+  font-family: monospace;
+  font-size: large;
+}
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.userContainer {
+  align-items: center;
+  justify-content: flex-start;
+  width: 200px;
+}
+.users ul {
+  margin-bottom: 25px;
+  height: 100%;
+}
+
+.search input {
+  width: 350px;
+  padding-left: 10px;
+  padding-right: 25px;
+  height: 30px;
+  border: 1px solid rgba(50, 49, 49, 0.921);
+  border-radius: 10px;
+  font-family: monospace;
+}
+/* 
+.githubIcon {
+  size: 24px;
+} */
+
+.searchBtn {
+  transform: scale(1.5);
+  color: white;
+  background: none;
+  height: 40px;
+  width: 35px;
+  border: none;
+  background-color: Transparent;
+  cursor: pointer;
+  outline: none;
+  padding-top: 10px;
+}
+
+.clear {
+  transform: scale(1.75);
+  color: blue;
+  background: none;
+  height: 40px;
+  width: 35px;
+  border: none;
+  background-color: Transparent;
+  cursor: pointer;
+  outline: none;
+  padding-top: 10px;
+}
+
+.searchContainer {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.radioButtons {
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+.clear:hover {
+  transform: scale(2);
+}
+.searchBtn:hover {
+  transform: scale(1.75);
+}
+.clear:active {
+  transform: scale(1.75);
+}
+.searchBtn:active {
+  transform: scale(1.5);
+}
+
+input[type="radio"] {
+  width: 15px;
+}
+
+a {
+  color: #fff;
+  font-family: monospace;
+}
